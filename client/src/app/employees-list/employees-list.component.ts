@@ -6,32 +6,28 @@ import { EmployeeService } from '../employee.service';
 @Component({
   selector: 'app-employees-list',
   template: `
-    <h2 class="text-center m-5">Employees List</h2>
+    <h2 class="text-center m-5">Transportadoras</h2>
 
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Level</th>
-                <th>Action</th>
+                <th>Nome</th>
+                <th>Opções</th>
             </tr>
         </thead>
 
         <tbody>
             <tr *ngFor="let employee of employees$ | async">
                 <td>{{employee.name}}</td>
-                <td>{{employee.position}}</td>
-                <td>{{employee.level}}</td>
                 <td>
-                    <button class="btn btn-primary me-1" [routerLink]="['edit/', employee._id]">Edit</button>
-                    <button class="btn btn-danger" (click)="deleteEmployee(employee._id || '')">Delete</button>
+                    <button class="btn btn-primary me-1" [routerLink]="['edit/', employee._id]">Editar</button>
+                    <button class="btn btn-danger" (click)="deleteEmployee(employee._id || '')">Remover</button>
                 </td>
             </tr>
         </tbody>
     </table>
 
-    <button class="btn btn-primary mt-3" [routerLink]="['new']">Add a New Employee</button>
+    <button class="btn btn-primary mt-3" [routerLink]="['new']">Adicionar entrada</button>
   `
 })
 export class EmployeesListComponent implements OnInit {
