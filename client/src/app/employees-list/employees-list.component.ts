@@ -12,6 +12,7 @@ import { EmployeeService } from '../employee.service';
         <thead>
             <tr>
                 <th>Nome</th>
+                <th>Status</th>
                 <th>Opções</th>
             </tr>
         </thead>
@@ -19,6 +20,7 @@ import { EmployeeService } from '../employee.service';
         <tbody>
             <tr *ngFor="let employee of employees$ | async">
                 <td>{{employee.name}}</td>
+                <td>{{employee.status}}</td>
                 <td>
                     <button class="btn btn-primary me-1" [routerLink]="['edit/', employee._id]">Editar</button>
                     <button class="btn btn-danger" (click)="deleteEmployee(employee._id || '')">Remover</button>

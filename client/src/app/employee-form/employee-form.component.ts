@@ -21,6 +21,21 @@ import { Employee } from '../employee';
         </div>
       </div>
 
+      <div class="form-floating mb-3">
+        <input class="form-control" type="text" formControlName="status" placeholder="status" required>
+        <label for="status">status</label>
+      </div>
+
+      <div *ngIf="status.invalid && (status.dirty || status.touched)" class="alert alert-danger">
+
+        <div *ngIf="status.errors?.['required']">
+          status is required.
+        </div>
+        <div *ngIf="status.errors?.['minlength']">
+          status must be at least 5 characters long.
+        </div>
+      </div>
+
 
       <button class="btn btn-primary" type="submit" [disabled]="employeeForm.invalid">Add</button>
     </form>
@@ -48,11 +63,13 @@ export class EmployeeFormComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   get name() { return this.employeeForm.get('name')!; }
+  get status() { return this.employeeForm.get('status')!; }
 
   ngOnInit() {
     this.initialState.subscribe(employee => {
       this.employeeForm = this.fb.group({
         name: [ employee.name, [Validators.required, Validators.minLength(3) ] ],
+        status: [ employee.status, [ Validators.required, Validators.minLength(5) ] ],
       });
     });
 
