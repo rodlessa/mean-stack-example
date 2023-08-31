@@ -35,10 +35,10 @@ export class EditEmployeeComponent implements OnInit {
     this.employeeService.updateEmployee(this.employee.value._id || '', employee)
       .subscribe({
         next: () => {
-          this.router.navigate(['/employees']);
+          this.router.navigate(['/transportadoras']);
         },
         error: (error) => {
-          alert('Failed to update employee');
+          alert('Failed to update transportadoras');
           console.error(error);
         }
       })

@@ -20,10 +20,10 @@ export class AddEmployeeComponent {
     this.employeeService.createEmployee(employee)
       .subscribe({
         next: () => {
-          this.router.navigate(['/employees']);
+          this.router.navigate(['/transportadoras']);
         },
         error: (error) => {
-          alert("Failed to create employee");
+          alert("Failed to create transportadoras");
           console.error(error);
         }
       });
